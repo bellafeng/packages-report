@@ -16,3 +16,15 @@
 
 ## when this script works, stage & commit it and the csv file
 ## PUSH!
+library(here)
+library(tidyverse)
+set_here(path=".", verbose = TRUE)
+#data <- read_csv(here("data", "installed-packages.csv"))
+ipt <- installed.packages() %>%
+  as_tibble()
+write.csv(ipt, file = here("data", "installed-packages.csv"))
+
+devtools::session_info()
+
+
+
