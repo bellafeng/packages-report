@@ -18,12 +18,12 @@ library(tidyverse)
 
 *As you complete tasks, you can ~~cross them out~~ by surrounding with `~~`.*
 
-* Have a look around the files here. Where are the R scripts? What are the directories `data` and `figs` for?
-* Notice that this README is an `.Rmd` file. That means it could contain R code and will need to be rendered to create `README.md`.
-* Open [R/01_write-installed-packages.R](R/01_write-installed-packages.R). Write the script as directed. Run it. Commit and push the current state.
-* Open [R/02_wrangle-packages.R](R/02_wrangle-packages.R). Fill in the missing pieces of the script as directed. Run it. Commit and push the current state.
-* Open [R/03_barchart-packages-built.R](R/03_barchart-packages-built.R). Fill in the missing pieces of the script as directed. Run it. Commit and push the current state.
-* Fill in the blanks below in this README, using the results stored elsewhere.
+~~.* Have a look around the files here. Where are the R scripts? What are the directories `data` and `figs` for?~~.*
+~~.* Notice that this README is an `.Rmd` file. That means it could contain R code and will need to be rendered to create `README.md`.~~.*
+~~.* Open [R/01_write-installed-packages.R](R/01_write-installed-packages.R). Write the script as directed. Run it. Commit and push the current state.~~.*
+~~.* Open [R/02_wrangle-packages.R](R/02_wrangle-packages.R). Fill in the missing pieces of the script as directed. Run it. Commit and push the current state.~~.*
+~~.* Open [R/03_barchart-packages-built.R](R/03_barchart-packages-built.R). Fill in the missing pieces of the script as directed. Run it. Commit and push the current state.~~.*
+~~.* Fill in the blanks below in this README, using the results stored elsewhere.
 * If you get this far, write an R script to run the whole analysis and, perhaps, another script that does a `make clean` style reset.
 
 ## Overview
@@ -32,6 +32,7 @@ The goal of packages-report is to FINISH THIS SENTENCE.
 
 ```{r, include = FALSE}
 ## load data/add-on-packages-freqtable.csv here in this chunk
+apt_freqtable <- read.csv(here("data", "add-on-packages-freqtable.csv")) %>% as_tibble()
 ```
 
 I have `FILL THIS IN!!!` add-on packages installed.
@@ -41,6 +42,7 @@ Here's how they break down in terms of which version of R they were built under,
 ```{r, echo = FALSE}
 ## print the frequency table here
 ## make it prettier if you know how
+print(apt_freqtable)
 ```
 
 ![](figs/built-barchart.png)
@@ -48,3 +50,17 @@ Here's how they break down in terms of which version of R they were built under,
 ### Flow of the analysis
 
 *If you have time, document the analysis works, using internal links.*
+
+
+
+### Flow of the analysis
+
+Run [R/90_make-clean.R](R/90_make-clean.R) to clean out downstream products.
+
+Run [R/95_make-all.R](R/95_make-all.R) to re-run the analysis and re-render this README.
+
+| Input                         | Script                        | Output                                            |
+|-------------------------------|-------------------------------|---------------------------------------------------|
+|                               | [R/01_write-installed-packages.R](R/01_write-installed-packages.R) | [data/installed-packages.csv](data/installed-packages.csv)                            |
+| [data/installed-packages.csv](data/installed-packages.csv)        | [R/02_wrangle-packages.R](R/02_wrangle-packages.R)         | [data/add-on-packages.csv](data/add-on-packages.csv)<br>[data/add-on-packages-freqtable.csv](data/add-on-packages-freqtable.csv) |
+| [data/add-on-packages-freqtable.csv](data/add-on-packages-freqtable.csv) | [R/03_barchart-packages-built.R](R/03_barchart-packages-built.R)  | [figs/built-barchart.png](figs/built-barchart.png)                          
