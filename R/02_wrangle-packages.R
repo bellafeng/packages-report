@@ -1,3 +1,7 @@
+
+
+ipt <- read.csv(here("data", "installed-packages.csv")) %>% as_tibble()
+
 ## create a data frame from data/installed-packages.csv
 ## with, e.g., readr::read_csv() or read.csv()
 
@@ -16,6 +20,8 @@ apt_freqtable <- apt %>%
   count(Built) %>%
   mutate(prop = n / sum(n))
 
+write.csv(apt_freqtable, file = here("data", "add-on-packages-freqtable.csv"))
+devtools::session_info()
 ## write this data frame to data/add-on-packages-freqtable.csv
 ## YES overwrite the files that are there now
 ## they came from me (Jenny)
